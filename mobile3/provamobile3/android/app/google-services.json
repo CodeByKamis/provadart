@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "469902711938",
+    "project_id": "prova3dart",
+    "storage_bucket": "prova3dart.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469902711938:android:b122299b3fe8c55e13e89b",
+        "android_client_info": {
+          "package_name": "com.provamobile.provamobile3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaYS5ezJf3GZ0HlRASdUlMwFtv5gulaR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
