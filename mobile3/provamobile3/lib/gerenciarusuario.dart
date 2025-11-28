@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class GerenciarUsuario extends StatefulWidget {
   final String nomeUsuario;
@@ -27,7 +27,7 @@ class _GerenciarUsuarioState extends State<GerenciarUsuario> {
   Future<void> carregarDadosUsuario() async {
     final query = await FirebaseFirestore.instance
         .collection("usuarios")
-        .where("nome", isEqualTo: widget.nomeUsuario)
+        .where("nome", isEqualTo: widget.nomeUsuario) // Usando o nome passado
         .get();
 
     if (query.docs.isNotEmpty) {

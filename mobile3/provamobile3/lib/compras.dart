@@ -36,7 +36,13 @@ class _ComprasState extends State<Compras> {
 
       mostrarMensagem("Compra realizada com sucesso!", true);
 
-      Navigator.pushNamedAndRemoveUntil(context, '/catalogo', (route) => false);
+      // Vamos passar para o Catalogo com o nome do usuário
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        '/catalogo',
+        (route) => false,
+        arguments: email, // Passando email como parâmetro para o catálogo
+      );
     } catch (e) {
       mostrarMensagem("Erro ao salvar compra.", false);
     }
@@ -45,8 +51,16 @@ class _ComprasState extends State<Compras> {
   }
 
   void cancelarCompra() {
-    mostrarMensagem("Compra cancelada com sucesso!", false);
-    Navigator.pushNamedAndRemoveUntil(context, '/catalogo', (route) => false);
+    // Mostra a mensagem "Compra cancelada!" e volta para a página de catálogo
+    mostrarMensagem("Compra cancelada!", true);
+
+    // Ao clicar em "Cancelar", navega para o Catalogo, passando o parâmetro de email
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      '/catalogo',
+      (route) => false,
+      arguments: emailController.text.trim(),  // Passando o email do usuário para o Catalogo
+    );
   }
 
   void mostrarMensagem(String msg, bool sucesso) {
@@ -84,7 +98,11 @@ class _ComprasState extends State<Compras> {
                 const Spacer(),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/gerenciarusuario');
+                    Navigator.pushNamed(
+                      context,
+                      '/gerenciarusuario',
+                      arguments: 'nomeUsuario', // Passe o nome do usuário aqui
+                    );
                   },
                   child: Image.asset('assets/user.png', height: 35),
                 ),
@@ -106,6 +124,31 @@ class _ComprasState extends State<Compras> {
           padding: const EdgeInsets.all(25),
           child: Column(
             children: [
+              // Botão Voltar abaixo da logo
+              Align(
+                alignment: Alignment.topLeft,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Ao clicar no botão "Voltar", navega para o Catalogo
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      '/catalogo',
+                      (route) => false,
+                      arguments: emailController.text.trim(),  // Passando email para o catálogo
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFE77C2C),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                  ),
+                  child: const Text(
+                    "Voltar",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ),
+              ),
               const SizedBox(height: 10),
               const Text(
                 "CARRINHO DE COMPRAS",
@@ -202,7 +245,7 @@ class _ComprasState extends State<Compras> {
                     width: 150,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: cancelarCompra,
+                      onPressed: cancelarCompra, // Cancelar compra
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
                         shape: RoundedRectangleBorder(
@@ -217,7 +260,7 @@ class _ComprasState extends State<Compras> {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
