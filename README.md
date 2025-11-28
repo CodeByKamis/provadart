@@ -1,1 +1,2 @@
-# provadart
+# Prova da Matéria de Mobile
+Professor Vinicius: quando clicado no botão "assinar" na página catálogo, o usuário vai para a página de cadastrar usuário para assinar o catalogo, contudo, quando ele clica no ícone do header de usuário, os dados que estão lá são apagados, nós (eu e o professor) tentamos resolver mas não deu certo. Contudo, estou entregando pois está atendendo todos os critérios, pois caso o usuário clique no ícone de usuário diretamente da página catálogo, os dados são exibidos.
