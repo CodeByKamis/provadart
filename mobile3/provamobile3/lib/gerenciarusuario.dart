@@ -27,7 +27,7 @@ class _GerenciarUsuarioState extends State<GerenciarUsuario> {
   Future<void> carregarDadosUsuario() async {
     final query = await FirebaseFirestore.instance
         .collection("usuarios")
-        .where("nome", isEqualTo: widget.nomeUsuario) // Usando o nome passado
+        .where("nome", isEqualTo: widget.nomeUsuario)
         .get();
 
     if (query.docs.isNotEmpty) {
